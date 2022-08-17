@@ -9,13 +9,6 @@ module Types
 
     # TODO: remove me
     field :tasks, resolver: Queries::Tasks
-
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
-    end
+    field :task, resolver: Queries::Task
   end
 end
-# field :books, resolver: Queries::Books
-# field :book, resolver: Queries::Book
