@@ -1,9 +1,35 @@
-import Editor from './Editor';
+// import Editor from './Editor';
 
-type Prop = {
-	name : string;
+// const App = () => <Editor />;
+
+// export default App;
+
+import { useQuery, gql } from "@apollo/client";
+
+const FETCH_TASKS = gql`
+  query {
+    tasks {
+      id
+      title
+    }
+  }
+`;
+
+interface Task {
+  id: string;
+  title: string;
 }
-// const HelloMessage: React.FC<Prop>  = ({ name }) => <h1>Hello, {name}!</h1>;
-const App = () => <Editor />;
+
+function App() {
+  const { data: { tasks = [] } = {} } = useQuery(FETCH_TASKS);
+
+  return (
+    <div>
+      {tasks.map((task: Task) => (
+        <div key={task.id}>{task.title}</div>
+      ))}
+    </div>
+  );
+}
 
 export default App;
