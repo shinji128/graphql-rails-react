@@ -1,9 +1,3 @@
-// import Editor from './Editor';
-
-// const App = () => <Editor />;
-
-// export default App;
-
 import { useQuery, gql } from "@apollo/client";
 
 const FETCH_TASKS = gql`
@@ -15,12 +9,12 @@ const FETCH_TASKS = gql`
   }
 `;
 
-interface Task {
-  id: string;
+type Task = {
+  id: number;
   title: string;
 }
 
-function App() {
+const App = () => {
   const { data: { tasks = [] } = {} } = useQuery(FETCH_TASKS);
 
   return (
