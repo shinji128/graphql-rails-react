@@ -1,16 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Tasks from "./components/Tasks";
 import TaskShow from "./components/TaskShow";
+import TopPage from "./components/TopPage";
+import TaskUpdate from "./components/TaskUpdate";
 
-function App() {
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Tasks />}></Route>
-        <Route path="tasks/:id" element={<TaskShow />}></Route>
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<TopPage />} />
+          <Route path="tasks/:id" element={<TaskShow />} />
+          <Route path="tasks/:id/edit" element={<TaskUpdate />} />
+        </Routes>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
