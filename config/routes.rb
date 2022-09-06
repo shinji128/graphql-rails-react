@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "graphql#execute"
-  end
-  post "/graphql", to: "graphql#execute"
-  root to: 'site#index'
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql#execute' if Rails.env.development?
+  post '/graphql', to: 'graphql#execute'
 
-  # namespace :api do
-  #   resources :tasks, only: %i[index show create destroy update]
-  # end
+  root to: 'tasks#index'
+
+  get 'tasks/:id', to: 'tasks#index'
 end
