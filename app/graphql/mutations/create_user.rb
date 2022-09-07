@@ -6,8 +6,6 @@ module Mutations
 
     def resolve(params:)
       user = User.create(params.to_h)
-      p params
-      puts params
       { user: }
     end
   end
